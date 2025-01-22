@@ -14,30 +14,29 @@ const Login = () => {
 
         try {
                 const res = await fetch(url, {
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    method: "POST",
+                    credentials: 'include',
                     body: JSON.stringify({name: userName, email: userEmail})
+                });
+                
+                if (!res.ok){
+                    throw new Error(res.status);
                 }
-            );
 
-            if (!Response.ok){
-                throw new Error(res.status);
-                console.log(res);
-            }
-
-            const json = await res.json();
-            console.log(json);
+                const json = await res.json();
+                console.log(json);
 
         } catch (error){
-            console.log(error);
+            console.log(error.message);
         }
     }
 
     return (
         <>
-            <h1> Login </h1>
+            <h1> Fetch </h1>
 
             <form onSubmit={login}>
                 <input type='text' placeholder='Name'onChange={(e) => setUserName(e.target.value)}></input>
