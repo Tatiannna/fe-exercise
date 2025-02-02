@@ -56,14 +56,14 @@ export const searchDogs = (filter = {}) => async dispatch => {
 
     try {
         let res = await fetch(url, {
-            method: GET,
+            method: "GET",
             credentials: 'include'
         });
     
         let data = await res.json();
     
         if (res.ok){
-            dispatch(receiveDogs);
+            dispatch(receiveDogs(data));
         }else{
             throw new Error(res.status);
         }
@@ -74,7 +74,7 @@ export const searchDogs = (filter = {}) => async dispatch => {
 
 
 // POST /dogs
-const getDogs = (ids = []) => async dispatch => {
+export const getDogs = (ids = []) => async dispatch => {
 
     let url = 'https://frontend-take-home-service.fetch.com/dogs';
 
