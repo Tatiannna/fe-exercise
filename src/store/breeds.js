@@ -60,7 +60,7 @@ const deleteBreeds = async () => async dispatch => {
 }
 
 
-const breedReducer = (state = {}. action) => {
+const breedReducer = (state = {}, action) => {
     let newState = {...state};
 
     switch(action.type){
