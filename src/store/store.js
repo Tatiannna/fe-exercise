@@ -10,8 +10,7 @@ const rootReducer = combineReducers({
     locations: locationReducer
 });
   
-const configureStore = (preloadedState) => {
-  return createStore(rootReducer, initialState, applyMiddleware(thunk));
-};
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
-export default configureStore;
+
+export default store;
