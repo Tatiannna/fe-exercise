@@ -1,0 +1,15 @@
+.dog-list-container {
+    display: flex;
+}
+
+.dog-container {
+    border: solid 1px black;
+    width: 20%;
+}
+
+img {
+    width: 100%;
+}
+
+
+
