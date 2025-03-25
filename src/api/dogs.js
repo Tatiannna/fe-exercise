@@ -1,28 +1,4 @@
 
-
-// GET /dogs/breeds
-const getBreeds = async () => {
-
-    const url = 'https://frontend-take-home-service.fetch.com/dogs/breeds';
-
-    try {
-        const res = await fetch(url, {
-            method: "GET", 
-            credentials: 'include'
-        });
-        
-        if (!res.ok){
-            console.log("res not ok");
-            throw new Error(res.status);
-        }
-        const json = await res.json();
-        console.log(json);
-
-    } catch (error){
-        console.log(error.message);
-    }
-}
-
 // GET /dogs/search
 export const searchDogs = async(params) => {
 

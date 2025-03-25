@@ -9,7 +9,7 @@ export const login = async (username, email) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                // credentials: 'include',
+                credentials: 'include',
                 body: JSON.stringify({name: username, email: email})
             });
             

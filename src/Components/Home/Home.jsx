@@ -14,7 +14,8 @@ const Home = () => {
                 <input type="text" placeholder="Filter by breed"/>
                 <button> Search </button>
             </form>
-            < DogList />
+            <DogList/>
+
         </>
     );
 }

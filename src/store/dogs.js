@@ -23,7 +23,6 @@ export const removeDogs = () => {
     })
 }
 
-
 // GET /dogs/search
 export const searchDogs = (filter = {}) => async dispatch => {
 
@@ -56,14 +55,14 @@ export const searchDogs = (filter = {}) => async dispatch => {
 
     try {
         let res = await fetch(url, {
-            method: "GET",
             credentials: 'include'
         });
     
-        let data = await res.json();
-    
+        let dogData = await res.json();
+        let dogIds = dogData.resultIds;
+
         if (res.ok){
-            dispatch(receiveDogs(data));
+            dispatch(getDogs(dogIds));
         }else{
             throw new Error(res.status);
         }
@@ -75,13 +74,14 @@ export const searchDogs = (filter = {}) => async dispatch => {
 
 // POST /dogs
 export const getDogs = (ids = []) => async dispatch => {
-
+    
     let url = 'https://frontend-take-home-service.fetch.com/dogs';
 
     if (ids.length > 100){
         ids = ids.slice(0,100);
     }
-
+    console.log("in post method")
+    console.log(ids);
     try {
         const res = await fetch(url, {
             method: "POST",
@@ -89,7 +89,7 @@ export const getDogs = (ids = []) => async dispatch => {
                 "Content-Type": "application/json"
             },
             credentials: 'include',
-            body: ids
+            body: JSON.stringify(ids),
         });
         
         const data = await res.json();
